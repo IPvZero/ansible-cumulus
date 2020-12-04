@@ -7,6 +7,10 @@ bgp:
       bgp_type: external
     swp2:
       bgp_type: external
+    swp3:
+      bgp_type: external
+    swp4:
+      bgp_type: external
   advertising: "False"
   bgp_networks: {}
 
