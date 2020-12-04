@@ -1,6 +1,6 @@
-### Automating Cumulus Data Center with Ansible
+# Automating Cumulus Data Center with Ansible
 
-# Automating Cumulus flat files
+### Automating Cumulus Flat Files
 
 
 ![alt text](https://github.com/IPvZero/ansible-cumulus/blob/main/images/ansible-cumulus1.png?raw=true)
