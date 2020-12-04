@@ -24,7 +24,7 @@
       dest: "/etc/network/interfaces"
     notify: reload interfaces
 
-  - name: Load BGP info
+  - name: Load BGP configuration
     template:
       src: "templates/flatbgp.j2"
       dest: "/etc/frr/frr.conf"
