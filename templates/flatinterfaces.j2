@@ -1,0 +1,22 @@
+# The loopback network interface
+auto lo
+iface lo inet loopback
+    # The primary network interface
+    address {{ interfaces.loopback }}
+
+# The primary network interface
+auto eth0
+iface eth0
+    address {{ interfaces.mgmt }}
+    vrf mgmt
+{% set ifaces = bgp.bgp_interfaces %}
+{% for iface in ifaces %}
+auto {{ iface }}
+iface {{ iface }}
+{% endfor %}
+
+auto mgmt
+iface mgmt
+    address 127.0.0.1/8
+    address ::1/128
+    vrf-table auto
