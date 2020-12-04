@@ -1,0 +1,25 @@
+frr version 7.0+cl4u3
+frr defaults datacenter
+hostname cumulus
+log syslog informational
+service integrated-vtysh-config
+{% set interfaces = bgp.bgp_interfaces %}
+{% for interface in interfaces %}
+ interface {{ interface }}
+ ipv6 nd ra-interval 10
+ no ipv6 nd suppress-ra
+{% endfor %}
+router bgp {{ bgp.bgp_as }}
+bgp router-id {{ bgp.bgp_rid }}
+{% set interfaces = bgp.bgp_interfaces %}
+{% for interface in interfaces %}
+ neighbor {{ interface }} interface remote-as {{ interfaces[interface]['bgp_type'] }}
+{% endfor %}
+{% if bgp.advertising == "True" %}
+ address-family ipv4 unicast
+{% for nwrk in bgp.bgp_networks %}
+ network {{ nwrk }}
+{% endfor %}
+exit-address-family
+{% endif %}
+line vty
