@@ -1,6 +1,5 @@
 ---
 bgp:
-  loopback_prefix: "10.10.10.10/32"
   bgp_as: "65005"
   bgp_rid: "10.10.10.10"
   bgp_interfaces:
